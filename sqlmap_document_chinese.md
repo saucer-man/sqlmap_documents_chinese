@@ -443,7 +443,7 @@ python sqlmap.py -l burp.log --scope="(www)?\.target\.(com|net|org)"
 
 sqlmap默认会对参数进行编码，有的服务器端只接受未编码的参数，则可以使用这一开关来停止sqlmap自动编码
 
-#### **3.3.21 绕过防CSRF保护
+#### **3.3.21 绕过防CSRF保护**
 > 参数 --csrf-token和--csrf-url
 
 现在有很多网站通过在表单中添加值为随机生成的token的隐藏字段来防止CSRF攻击。SqlMap的会自动尝试识别并绕过这种保护。但也有选项`--csrf-token`，并`--csrf-url`可以用来进一步微调它。
@@ -610,7 +610,7 @@ python sqlmap.py -u "http://targeturl" --cookie="param1=value1*;param2=value2"
 
 当检索结果时，sqlmap会将所有条目都被转换为字符串类型，其中NULL替换为空白字符，这是为了防止任何错误状态（例如，将NULL值与字符串值串联）以及简化数据检索过程本身。然而，有报告的案例（例如较早版本的MySQL DBMS）使用此机制会发生数据检索的问题（例如None返回值），需要关闭此机制（使用此开关）。
 
-#### **3.5.7 关闭字符串转义**
+#### **3.5.8 关闭字符串转义**
 
 > 开关 --no-escape
 
@@ -618,7 +618,7 @@ python sqlmap.py -u "http://targeturl" --cookie="param1=value1*;param2=value2"
 
 用户可以使用此开关将其关闭。（比如为了减少payload的长度）
 
-#### **3.5.8 定制payload**
+#### **3.5.9 定制payload**
 
 > 参数 --prefix和--suffix
 
@@ -643,7 +643,7 @@ $query = "SELECT * FROM users WHERE id=('1') <PAYLOAD> AND ('abc'='abc') LIMIT 0
 
 在这个简单的例子中，sqlmap可以自动检测，而无需提供自定义边界，但有时在实际应用中很复杂，例如当注入点位于嵌套JOIN查询中时，有必要提供它。
 
-#### **3.5.9 指定注入数据**
+#### **3.5.10 指定注入数据**
 
 > 参数 --tamper
 
@@ -2327,6 +2327,10 @@ current user is DBA:    True
 ## 4. 总结
 
 sqlmap是一个非常强大的自动化SQL注入工具，有时候我们往往只尝试了最简单的用法便放弃了，甚至没有找到注入点，现在看来很有必要逐渐掌握SQL注入的高级方法。
+
+翻译文档也耗费了好几天时间，不过我认为这对于以后的学习是很有帮助的。markdown文档和sqlmap高清思维导图（来源网络）都上传到了github上，如果大家有需要可以自行下载,地址https://github.com/gengyanqing/sqlmap_documents_chinese
+
+如果转载请注明作者和来源，请做个有素养的人。
 
 在翻译官方文档的过程中也参考了很多别人的博客和文章，特此感谢。如下：
 - https://www.secpulse.com/archives/4213.html
